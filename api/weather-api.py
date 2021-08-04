@@ -29,6 +29,7 @@ weather_map = {
 
 #weather current, historical, future data
 res_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=minutely,alerts&appid="+api_key).json()
+#print(datetime.datetime.fromtimestamp(res_weather['current']['dt']).strftime('%y-%m-%d %H:%M:%S'))
 
 #get month, day, hour
 def retrieve_datetime(unix):
@@ -48,12 +49,14 @@ daily_forecast = res_weather['daily'] #8 days of data
 @app.route('/curr-weather', methods=['GET'])
 def current():
     weather_type = curr_weather['weather'][0]['main']
-    date_time = retrieve_datetime(res_weather["current"]["dt"])
+    date_time = retrieve_datetime(curr_weather["dt"])
     if len(curr_weather):
         return jsonify(
             {
                 "code": 200,
                 "data": {
+                    "date": datetime.datetime.fromtimestamp(curr_weather['dt']).strftime('%A, %d %B %Y'),
+                    "time": datetime.datetime.fromtimestamp(curr_weather['dt']).strftime('%H:%M:%S'),
                     "month":date_time[0],
                     "day":date_time[1],
                     "hour":date_time[2],
@@ -81,6 +84,8 @@ def hour():
         weather_type = forecast['weather'][0]['main']
         date_time = retrieve_datetime(forecast["dt"])
         forecast_list.append({
+            "date": datetime.datetime.fromtimestamp(forecast['dt']).strftime('%A, %d %B %Y'),
+            "time": datetime.datetime.fromtimestamp(forecast['dt']).strftime('%H:%M:%S'),
             "month":date_time[0],
             "day":date_time[1],
             "hour":date_time[2],
@@ -113,6 +118,8 @@ def daily():
         weather_type = forecast['weather'][0]['main']
         date_time = retrieve_datetime(forecast["dt"])
         forecast_list.append({
+            "date": datetime.datetime.fromtimestamp(forecast['dt']).strftime('%A, %d %B %Y'),
+            "time": datetime.datetime.fromtimestamp(forecast['dt']).strftime('%H:%M:%S'),
             "month":date_time[0],
             "day":date_time[1],
             "hour":date_time[2],
