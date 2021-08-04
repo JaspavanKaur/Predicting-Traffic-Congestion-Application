@@ -3,7 +3,7 @@ import requests
 import datetime
 import statistics
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 # from datetime import date
 # import holidays
 
@@ -138,4 +138,4 @@ def daily():
     ), 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5001, debug=True)
