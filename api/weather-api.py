@@ -1,11 +1,8 @@
 import requests
-# import calendar
 import datetime
 import statistics
 
 from flask import Flask, request, jsonify
-# from datetime import date
-# import holidays
 
 app = Flask(__name__)
 
@@ -27,10 +24,6 @@ weather_map = {
     'Squall':11
 }
 
-#weather current, historical, future data
-res_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=minutely,alerts&appid="+api_key).json()
-#print(datetime.datetime.fromtimestamp(res_weather['current']['dt']).strftime('%y-%m-%d %H:%M:%S'))
-
 #get month, day, hour
 def retrieve_datetime(unix):
     # unix = res_weather["current"]["dt"]
@@ -39,15 +32,11 @@ def retrieve_datetime(unix):
     hour = datetime.datetime.utcfromtimestamp(unix).strftime('%H')
     return month, day, hour
 
-#aggregate the required information to send to the model using traffic-congestion api created
-#temperature, humidity, wind_speed, wind_direction, clouds_all, weather_type
-curr_weather = res_weather['current']
-hourly_forecast = res_weather['hourly'] #48h of data
-daily_forecast = res_weather['daily'] #8 days of data
-
 #api that retrieves current weather data for testing
 @app.route('/curr-weather', methods=['GET'])
 def current():
+    res_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=minutely,alerts&appid="+api_key).json()
+    curr_weather = res_weather['current']
     weather_type = curr_weather['weather'][0]['main']
     date_time = retrieve_datetime(curr_weather["dt"])
     if len(curr_weather):
@@ -79,6 +68,8 @@ def current():
 #api that retrieves hourly forecast data for testing
 @app.route('/hour-forecast', methods=['GET'])
 def hour():
+    res_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=minutely,alerts&appid="+api_key).json()
+    hourly_forecast = res_weather['hourly']
     forecast_list = []
     for forecast in hourly_forecast:
         weather_type = forecast['weather'][0]['main']
@@ -113,6 +104,8 @@ def hour():
 #api that retrieves daily forecast data for testing
 @app.route('/daily-forecast', methods=['GET'])
 def daily():
+    res_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=minutely,alerts&appid="+api_key).json()
+    daily_forecast = res_weather['daily']
     forecast_list = []
     for forecast in daily_forecast:
         weather_type = forecast['weather'][0]['main']

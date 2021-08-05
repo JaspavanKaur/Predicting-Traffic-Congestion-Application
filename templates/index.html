@@ -161,20 +161,20 @@
                 <template v-for="forecast in daily">
                   <template v-if="forecast.colour == 'success'">
                     <tr class="table-success">
-                      <td>${current.date}</td>
-                      <td>${current.result}</td>
+                      <td>${forecast.date}</td>
+                      <td>${forecast.result}</td>
                     </tr>
                   </template>
                   <template v-else-if="current.colour == 'warning'">
                     <tr class="table-warning">
-                      <td>${current.date}</td>
-                      <td>${current.result}</td>
+                      <td>${forecast.date}</td>
+                      <td>${forecast.result}</td>
                     </tr>
                   </template>
                   <template v-else>
                     <tr class="table-danger">
-                      <td>${current.date}</td>
-                      <td>${current.result}</td>
+                      <td>${forecast.date}</td>
+                      <td>${forecast.result}</td>
                     </tr>
                   </template>
                 </template>
