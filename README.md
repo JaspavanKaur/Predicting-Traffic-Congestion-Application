@@ -1,10 +1,10 @@
 # Predicting Traffic Congestion Application
  ## Table of contents
-* General info
-* Technologies
-* Setup
-* Additional Files
-* Troubleshooting
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Additional Files](#additional-files)
+* [Troubleshooting](#troubleshooting)
 
 ## General info
 This project is a simple web application that predicts if there would be low, medium or high traffic congestion using real-time weather forecasting data from OpenWeatherMap API. It is a prototype for "Code for Cities: Environmental Sustainability and Resiliency", a hackathon held by SMU AntHill and Surbana Jurong, which aims to solve environmental and sustainability issues in Singapore using data analytics/science.
