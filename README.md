@@ -21,6 +21,7 @@ Project is created with:
 ## Setup
 To run this project, install it locally using python:
 
+
 1. Run traffic-congestion-api.py and weather-api.py files in api folder. Ensure that they are run in different cmd terminals.
 ```
 cd api
@@ -31,11 +32,13 @@ cd api
 python weather-api.py
 ```
 
+
 2. Run app.py
 ```
 cd ..
 python app.py
 ```
+
 
 3. Ctrl + click on the localhost link. You should see the front page as seen below
 
