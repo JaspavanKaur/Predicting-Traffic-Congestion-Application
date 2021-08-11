@@ -9,7 +9,7 @@
 ## General info
 This project is a simple web application that predicts if there would be low, medium or high traffic congestion using real-time weather forecasting data from OpenWeatherMap API. It is a prototype for "Code for Cities: Environmental Sustainability and Resiliency", a hackathon held by SMU AntHill and Surbana Jurong, which aims to solve environmental and sustainability issues in Singapore using data analytics/science.
 
-The predictions are tested using various classification and neural network models such as SVM, Random Forest, K-NN, etc. If you would like to know more on what models we used to test and train, you can take a look [here](models/Code_for_cities_Team_Bzbz.ipynb). In this website, we decided to use Random Forest for our predictions.
+We used various classification and neural network models such as SVM, Random Forest, K-NN, etc to train our dataset. If you would like to know more on what models we used and their outcome, you can take a look [here](models/Code_for_cities_Team_Bzbz.ipynb). In this website, we decided to use Random Forest for our predictions.
 	
 ## Technologies
 Project is created with:
